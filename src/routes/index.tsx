@@ -5,8 +5,9 @@ import hero from "@/assets/lakshmi-2.jpg.asset.json";
 import working from "@/assets/lakshmi-1.jpg.asset.json";
 import club from "@/assets/lakshmi-3.jpg.asset.json";
 import grad from "@/assets/lakshmi-4.jpg.asset.json";
+import vidShot from "@/assets/vidcruncher-screenshot.png.asset.json";
 import {
-  NAV, EMAIL, LINKEDIN, HERO_STATS, CLIENTS, EXPERIENCE, TAGS, CASES, PRINCIPLES, TOOLS, type CaseStudy,
+  NAV, EMAIL, EMAIL_ALT, LINKEDIN, HERO_STATS, CLIENTS, EXPERIENCE, TAGS, CASES, PRINCIPLES, TOOLS, type CaseStudy,
 } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/")({
@@ -150,12 +151,18 @@ function Hero() {
 
 function Clients() {
   return (
-    <Section id="clients" eyebrow="Clients" title="Enterprise clients I brought on board" caption="Enterprise teams that signed up for Unacademy's B2B technical upskilling courses.">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <Section id="clients" eyebrow="Clients" title="Enterprise clients I marketed to" caption="I took Unacademy's B2B technical upskilling courses to these companies, and my positioning, pitch and sales materials helped them sign up for their engineering teams.">
+      <div className="reveal grid grid-cols-2 items-center gap-x-8 gap-y-14 py-6 sm:grid-cols-4">
         {CLIENTS.map((c) => (
-          <div key={c.name} className="group reveal flex h-28 flex-col items-center justify-center gap-2 rounded-2xl border bg-card p-4 text-center transition hover:shadow-card">
-            <div className="logo-mono"><Logo domain={c.domain} name={c.name} size="h-10" /></div>
-            <span className="text-xs font-medium text-muted-foreground">{c.name}</span>
+          <div key={c.name} className="group flex h-12 items-center justify-center">
+            <div className="relative">
+              <img src={c.logo} alt={`${c.name} logo`} loading="lazy" className="h-9 w-auto max-w-[160px] object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:h-10" />
+              <span
+                aria-hidden
+                className="absolute inset-0 bg-logo-ink transition-opacity duration-300 group-hover:opacity-0"
+                style={{ maskImage: `url(${c.logo})`, WebkitMaskImage: `url(${c.logo})`, maskSize: "contain", WebkitMaskSize: "contain", maskRepeat: "no-repeat", WebkitMaskRepeat: "no-repeat", maskPosition: "center", WebkitMaskPosition: "center" }}
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -254,7 +261,7 @@ function SideProjects() {
     <Section id="side-projects" eyebrow="Side projects" title="Things I build on my own time">
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="reveal flex flex-col rounded-2xl border bg-card p-7 shadow-card">
-          <div className="grid aspect-video place-items-center rounded-xl bg-muted text-sm"><Placeholder>[VidCruncher screenshot]</Placeholder></div>
+          <img src={vidShot.url} alt="VidCruncher website" loading="lazy" className="aspect-video w-full rounded-xl border object-cover object-top" />
           <p className="mt-6 text-sm font-medium text-muted-foreground">Founder and product marketer</p>
           <h3 className="mt-1 text-2xl font-bold">VidCruncher</h3>
           <p className="mt-3 leading-relaxed">Free video tools (compress, convert, trim, crop, GIF, merge, watermark) that run entirely in the browser. Nothing is uploaded and no account is needed. Available in 10 languages.</p>
@@ -358,7 +365,7 @@ function Contact() {
           <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground"><Mail size={18} /> Email me</a>
           <a href={LINKEDIN} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-background/30 px-6 py-3 font-semibold"><Linkedin size={18} /> LinkedIn</a>
         </div>
-        <p className="mt-6 text-sm"><Placeholder>[Email address to be added]</Placeholder></p>
+        <p className="mt-6 text-sm opacity-80">{EMAIL} · <a href={`mailto:${EMAIL_ALT}`} className="underline">{EMAIL_ALT}</a></p>
       </div>
     </section>
   );

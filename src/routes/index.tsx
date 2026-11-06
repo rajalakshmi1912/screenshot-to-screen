@@ -170,7 +170,7 @@ function Experience() {
         {EXPERIENCE.map((e, i) => (
           <li key={i} className="reveal relative mb-10 pl-10 last:mb-0">
             <span className="absolute -left-[21px] top-0 grid h-10 w-10 place-items-center rounded-full border bg-card shadow-card">
-              <Logo domain={e.domain} name={e.org[0]} size="h-5" />
+              <Logo domain={e.domain} name={e.org.charAt(0)} size="h-5" />
             </span>
             <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
               <h3 className="text-xl font-bold">{e.title} <span className="text-primary">· {e.org}</span></h3>

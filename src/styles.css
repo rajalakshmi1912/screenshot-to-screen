@@ -80,10 +80,8 @@
 @utility shadow-lift { box-shadow: var(--shadow-lift); }
 
 @utility reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  &.is-visible { opacity: 1; transform: none; }
+  opacity: 1;
+  transform: none;
 }
 
 @utility logo-mono {

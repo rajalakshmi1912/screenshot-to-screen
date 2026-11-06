@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { ArrowRight, ChevronDown, Download, Linkedin, Mail, MapPin, Play, Award, ExternalLink } from "lucide-react";
-import hero from "@/assets/lakshmi-2.jpg.asset.json";
-import working from "@/assets/lakshmi-1.jpg.asset.json";
-import club from "@/assets/lakshmi-3.jpg.asset.json";
-import grad from "@/assets/lakshmi-4.jpg.asset.json";
-import vidShot from "@/assets/vidcruncher-screenshot.png.asset.json";
 import {
   NAV, EMAIL, EMAIL_ALT, LINKEDIN, HERO_STATS, CLIENTS, EXPERIENCE, TAGS, CASES, PRINCIPLES, TOOLS, type CaseStudy,
 } from "@/lib/portfolio-data";
+
+const hero = { url: "/photos/lakshmi-hec-paris.jpg" };
+const club = { url: "/photos/lakshmi-classmates.jpg" };
+const grad = { url: "/photos/lakshmi-graduation.jpg" };
+const vidShot = { url: "/photos/vidcruncher-screenshot.webp" };
+const YOUTUBE_VIDEOS = ["ZfhnFr-1MPo", "gFPhYguV0ZU", "4gf0G0c3kWE"];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -125,7 +126,7 @@ function Hero() {
             <a href="#case-studies" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-lift transition hover:opacity-90">
               See my work <ArrowRight size={18} />
             </a>
-            <a href="#" title="[CV link to be added]" className="inline-flex items-center gap-2 rounded-full border bg-card px-6 py-3 font-semibold transition hover:border-primary hover:text-primary">
+            <a href="/Lakshmi_Priya_CV.pdf" download="Lakshmi_Priya_CV.pdf" className="inline-flex items-center gap-2 rounded-full border bg-card px-6 py-3 font-semibold transition hover:border-primary hover:text-primary">
               <Download size={18} /> Download CV
             </a>
             <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-12 w-12 place-items-center rounded-full border bg-card transition hover:text-primary"><Linkedin size={20} /></a>
@@ -134,7 +135,6 @@ function Hero() {
         </div>
         <div className="reveal relative mx-auto w-full max-w-sm">
           <img src={hero.url} alt="Lakshmi Priya Senthilvel at HEC Paris" className="aspect-[4/5] w-full rounded-2xl object-cover shadow-card" />
-          <img src={working.url} alt="Lakshmi at work" className="absolute -bottom-6 -left-6 hidden w-32 rounded-xl border-4 border-background object-cover shadow-card sm:block" />
         </div>
       </div>
       <div className="mt-16 grid gap-4 sm:grid-cols-3">
@@ -208,7 +208,7 @@ function CaseStudies() {
           </button>
         ))}
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid items-start gap-5 md:grid-cols-2">
         {list.map((c) => <CaseCard key={c.title} c={c} />)}
       </div>
     </Section>
@@ -276,16 +276,18 @@ function SideProjects() {
         </div>
         <div className="reveal flex flex-col rounded-2xl border bg-card p-7 shadow-card">
           <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="grid aspect-video place-items-center rounded-lg bg-muted text-xs text-placeholder"><Play size={20} /></div>
+            {YOUTUBE_VIDEOS.map((id) => (
+              <a key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noreferrer" className="group relative grid aspect-video place-items-center overflow-hidden rounded-lg bg-muted">
+                <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <span className="relative grid h-9 w-9 place-items-center rounded-full bg-background/80 text-foreground transition group-hover:scale-110"><Play size={16} /></span>
+              </a>
             ))}
           </div>
-          <p className="mt-2 text-xs"><Placeholder>[Add 2 to 3 video links to embed]</Placeholder></p>
           <p className="mt-6 text-sm font-medium text-muted-foreground">Built from scratch</p>
-          <h3 className="mt-1 text-2xl font-bold">Unacademy Pro Engineering on YouTube</h3>
+          <h3 className="mt-1 text-2xl font-bold">Unacademy India on YouTube</h3>
           <p className="mt-3 leading-relaxed">The content channel reaching engineering professionals for the B2B upskilling courses.</p>
-          <p className="mt-3 text-[15px]"><Placeholder>[Add subscriber and view count]</Placeholder></p>
-          <a href="https://www.youtube.com/@unacademyproengineering" target="_blank" rel="noreferrer" className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border px-5 py-2.5 font-semibold hover:border-primary hover:text-primary">
+          <p className="mt-3 text-[15px]">Unacademy India · 1.4M subscribers</p>
+          <a href="https://www.youtube.com/@unacademy/videos" target="_blank" rel="noreferrer" className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border px-5 py-2.5 font-semibold hover:border-primary hover:text-primary">
             Visit the channel <ExternalLink size={16} />
           </a>
         </div>
@@ -302,7 +304,7 @@ function Leadership() {
           <div className="reveal rounded-2xl border bg-card p-6 shadow-card">
             <h3 className="text-lg font-bold">President, Marketing Club, HEC Paris</h3>
             <p className="text-sm text-muted-foreground">Jan 2025 to Jun 2026 · Paris, France</p>
-            <p className="mt-3"><Placeholder>[Add events run, members, speakers or partners]</Placeholder></p>
+            <p className="mt-3">Lead the tech product marketing events for B2B tech companies.</p>
           </div>
           <div className="reveal rounded-2xl border bg-card p-6 shadow-card">
             <h3 className="text-lg font-bold">Sponsorships Lead, MBA Tournament 2025</h3>
@@ -365,7 +367,7 @@ function Contact() {
           <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground"><Mail size={18} /> Email me</a>
           <a href={LINKEDIN} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-background/30 px-6 py-3 font-semibold"><Linkedin size={18} /> LinkedIn</a>
         </div>
-        <p className="mt-6 text-sm opacity-80">{EMAIL} · <a href={`mailto:${EMAIL_ALT}`} className="underline">{EMAIL_ALT}</a></p>
+        <p className="mt-6 text-sm opacity-80"><a href={`mailto:${EMAIL}`} className="underline">{EMAIL}</a> · <a href={`mailto:${EMAIL_ALT}`} className="underline">{EMAIL_ALT}</a></p>
       </div>
     </section>
   );

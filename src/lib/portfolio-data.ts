@@ -8,8 +8,9 @@ export const NAV = [
   ["contact", "Contact"],
 ] as const;
 
-export const EMAIL = "[your.email@example.com]";
-export const LINKEDIN = "https://www.linkedin.com/in/sglp";
+export const EMAIL = "lakshmipriya.senthilvel@hec.edu";
+export const EMAIL_ALT = "sglakshmipriya6@gmail.com";
+export const LINKEDIN = "https://www.linkedin.com/in/sglp/";
 
 export const HERO_STATS = [
   { value: "€8M", label: "partnership closed with TCS" },
@@ -18,14 +19,14 @@ export const HERO_STATS = [
 ];
 
 export const CLIENTS = [
-  { name: "Amazon", domain: "amazon.com" },
-  { name: "Google", domain: "google.com" },
-  { name: "Meta", domain: "meta.com" },
-  { name: "Tata Motors", domain: "tatamotors.com" },
-  { name: "Mercedes-Benz", domain: "mercedes-benz.com" },
-  { name: "Tata Consultancy Services", domain: "tcs.com" },
-  { name: "Mahindra", domain: "mahindra.com" },
-  { name: "Maruti Suzuki", domain: "marutisuzuki.com" },
+  { name: "Amazon", logo: "/logos/amazon.svg" },
+  { name: "Google", logo: "/logos/google.svg" },
+  { name: "Meta", logo: "/logos/meta.svg" },
+  { name: "Tata Motors", logo: "/logos/tata-motors.svg" },
+  { name: "Mercedes-Benz", logo: "/logos/mercedes.svg" },
+  { name: "Tata Consultancy Services", logo: "/logos/tcs.svg" },
+  { name: "Mahindra", logo: "/logos/mahindra.svg" },
+  { name: "Maruti Suzuki", logo: "/logos/maruti.svg" },
 ];
 
 export const EXPERIENCE = [

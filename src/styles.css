@@ -33,6 +33,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-placeholder: var(--placeholder);
+  --color-logo-ink: var(--logo-ink);
 }
 
 :root {
@@ -58,6 +59,7 @@
   --input: oklch(0.91 0.008 85);
   --ring: oklch(0.42 0.2 275);
   --placeholder: oklch(0.6 0.15 60);
+  --logo-ink: oklch(0.278 0.03 257); /* #1F2937 */
   --shadow-card: 0 1px 2px oklch(0.2 0.02 270 / 0.04), 0 8px 24px -12px oklch(0.2 0.02 270 / 0.12);
   --shadow-lift: 0 20px 40px -20px color-mix(in oklab, var(--primary) 35%, transparent);
 }
